@@ -1,0 +1,9 @@
+on: push
+jobs:
+  fetch_currencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - run: yarn
+      - run: yarn start

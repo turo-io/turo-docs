@@ -1,0 +1,22 @@
+{
+  "name": "turo-docs",
+  "version": "0.0.1",
+  "description": "turo docs and automation to create turo docs",
+  "main": "dist/index.js",
+  "repository": "git@github.com:turo-io/turo-docs.git",
+  "author": "Julian Krispel-Samsel <julian@jkrsp.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "ts-node dailyCurrencies.ts"
+  },
+  "dependencies": {
+    "@octokit/core": "^3.5.1",
+    "@octokit/rest": "^18.6.2",
+    "got": "^11.8.2",
+    "typescript": "^4.3.2"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
