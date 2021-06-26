@@ -74,6 +74,7 @@ async function run() {
       branch: 'main'
     })
   } catch (err) {
+    console.error('create or update file contents errored')
     console.error(err)
     process.exit(2)
   }
