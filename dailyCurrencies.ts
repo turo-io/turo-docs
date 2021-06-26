@@ -1,6 +1,7 @@
 import got from 'got'
 import { Octokit } from '@octokit/rest'
 import { config } from 'dotenv'
+import { setOriginalNode } from 'typescript'
 
 config()
 
@@ -63,14 +64,19 @@ async function run() {
     console.info('file does not exist')
   }
 
-  await ok.rest.repos.createOrUpdateFileContents({
-    ...share,
-    content: Buffer.from(src).toString("base64"),
-    message: 'Upload daily currency turo units',
-    sha,
-    path,
-    branch: 'main'
-  })
+  try {
+    await ok.rest.repos.createOrUpdateFileContents({
+      ...share,
+      content: Buffer.from(src).toString("base64"),
+      message: 'Upload daily currency turo units',
+      sha,
+      path,
+      branch: 'main'
+    })
+  } catch (err) {
+    console.error(err)
+    process.exit(2)
+  }
 }
 
 run()
