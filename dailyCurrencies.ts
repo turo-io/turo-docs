@@ -63,10 +63,10 @@ async function run() {
     console.info('file does not exist')
   }
 
-  const resp = await ok.rest.repos.createOrUpdateFileContents({
+  await ok.rest.repos.createOrUpdateFileContents({
     ...share,
     content: Buffer.from(src).toString("base64"),
-    message: 'Update',
+    message: 'Upload daily currency turo units',
     sha,
     path,
     branch: 'main'
