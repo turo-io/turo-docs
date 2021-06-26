@@ -65,7 +65,7 @@ async function run() {
   }
 
   try {
-    await ok.rest.repos.createOrUpdateFileContents({
+    await ok.repos.createOrUpdateFileContents({
       ...share,
       content: Buffer.from(src).toString("base64"),
       message: 'Upload daily currency turo units',
