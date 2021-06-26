@@ -7,3 +7,5 @@ jobs:
         uses: actions/checkout@v2
       - run: yarn
       - run: yarn start
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}

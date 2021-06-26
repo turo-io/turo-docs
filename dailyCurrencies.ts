@@ -1,12 +1,11 @@
 import got from 'got'
 import { Octokit } from '@octokit/rest'
 import { config } from 'dotenv'
-import { setOriginalNode } from 'typescript'
 
 config()
 
 const ok = new Octokit({
-  auth: process.env.GITHUB_TOKEN
+  auth: process.env.AUTH_TOKEN
 })
 
 const alias = {
