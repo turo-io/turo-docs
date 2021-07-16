@@ -48,10 +48,12 @@ async function run() {
   }
 
   let sha = undefined
+  let manifestSha = undefined
 
   const today = (new Date()).toISOString().slice(0,10)
 
   const path = `currency/${today}.turo`
+
 
   try {
     const content = await ok.repos.getContent({
@@ -59,6 +61,13 @@ async function run() {
       path
     }) as any
     sha = content.data.sha
+
+    const manifest = await ok.repos.getContent({
+      ...share,
+      path: 'manifest.json'
+    }) as any
+
+    manifestSha = manifest.data.sha
   } catch(err) {
     console.info('file does not exist')
   }
@@ -72,6 +81,16 @@ async function run() {
       path,
       branch: 'main'
     })
+
+    await ok.repos.createOrUpdateFileContents({
+      ...share,
+      content: Buffer.from(`{"currency": "${path}"}`).toString("base64"),
+      message: 'Update manifest json',
+      sha: manifestSha,
+      path: 'manifest.json',
+      branch: 'main'
+    })
+
   } catch (err) {
     console.error('create or update file contents errored')
     console.error(err)
