@@ -1,9 +1,6 @@
 on:
-  push:
-    branches:
-      - main
-#  schedule:
-#    - cron: '0 8 * * *'
+  schedule:
+    - cron: '0 8 * * *'
 jobs:
   fetch_currencies:
     runs-on: ubuntu-latest
