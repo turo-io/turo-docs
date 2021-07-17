@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 10 17 * *'
+    - cron: '20 10 * * *'
 jobs:
   fetch_currencies:
     runs-on: ubuntu-latest
